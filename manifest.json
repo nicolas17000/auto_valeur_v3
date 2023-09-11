@@ -1,0 +1,67 @@
+{
+  // Nom de l'extension
+  "name": "__MSG_name__",
+
+  // Version de l'extension
+  "version": "36.0.0",
+
+  // Version du manifeste (mise à jour à 3 pour la nouvelle version)
+  "manifest_version": 3,
+
+  // Description de l'extension
+  "description": "__MSG_description__",
+
+  // Icônes de l'extension pour différentes tailles
+  "icons": {
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+
+  // Configuration du script d'arrière-plan en tant que service worker
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  // Configuration de l'action de l'extension (remplace browser_action dans V3)
+  "action": {
+    "default_icon": "images/browseraction.png",
+    "default_title": "Auto-valeur EG",
+    "default_popup": "popup.html"
+  },
+
+  // Scripts de contenu à injecter dans les pages spécifiées
+  "content_scripts": [
+    {
+      "matches": ["https://egis.expertsgroupe.fr/vrades/index"],
+      "js": ["content-script.js"]
+    }
+  ],
+
+  // Commandes personnalisées pour l'extension
+  "commands": {
+    "visible_screenshot": {
+      "description": "visible screenshot"
+    },
+    "entire_page_screenshot": {
+      "description": "Capturer la page entière"
+    }
+  },
+
+  // Permissions nécessaires pour l'extension
+  "permissions": ["activeTab", "storage", "sync", "runtime", "tabs"],
+
+  // Permissions optionnelles pour l'extension
+  "optional_permissions": ["desktopCapture"],
+
+  // Ressources accessibles depuis le web
+  "web_accessible_resources": [],
+
+  // Indique si l'extension peut fonctionner hors ligne
+  "offline_enabled": true,
+
+  // Langue par défaut de l'extension
+  "default_locale": "fr",
+
+  // URL de la page d'accueil de l'extension
+  "homepage_url": "https://egis.expertsgroupe.fr"
+}
